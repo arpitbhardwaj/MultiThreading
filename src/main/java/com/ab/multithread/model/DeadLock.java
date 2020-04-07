@@ -6,6 +6,11 @@ public class DeadLock {
     public void a(){
         synchronized (key1){
             System.out.println("[" + Thread.currentThread().getName()+ "] I am in a()");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             b();
         }
     }

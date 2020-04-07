@@ -2,6 +2,9 @@ package com.ab.multithread.basics;
 
 /**
  * @author Arpit Bhardwaj
+ *
+ * As soon as last non daemon thread finished JVM terminates no matter how many Daemon thread exists or running inside JVM
+ *
  */
 public class DeamonThread {
     public static void main(String[] args) throws InterruptedException {

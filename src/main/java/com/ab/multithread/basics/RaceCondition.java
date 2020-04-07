@@ -2,6 +2,17 @@ package com.ab.multithread.basics;
 
 import com.ab.multithread.model.LongWrapper;
 
+/**
+ * @author Arpit Bhardwaj
+ *
+ * Race condition in Java is a type of concurrency bug or issue which is introduced in your program
+ * because  parallel execution of your program by multiple threads
+ *
+ * Classical example of Race condition is incrementing a counter
+ * since increment is not an atomic operation and can be further divided into three steps like read, update and write.
+ *
+ */
+
 public class RaceCondition {
 
     public static void main(String[] args) throws InterruptedException {
