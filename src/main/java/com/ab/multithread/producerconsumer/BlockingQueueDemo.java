@@ -19,9 +19,12 @@ public class BlockingQueueDemo {
 
     public static void main(String[] args) {
 
-        final BlockingQueue<String> queue = new LinkedBlockingQueue<>();
+        //final BlockingQueue<String> queue = new LinkedBlockingQueue<>();
         //final BlockingQueue<String> queue = new LinkedBlockingQueue<>(10);
         //final BlockingQueue<String> queue = new ArrayBlockingQueue<>(10);
+        final CustomBlockingQueueWaitNotify<String> queue = new CustomBlockingQueueWaitNotify<>(10);
+        //final CustomBlockingQueueLockCondition<String> queue = new CustomBlockingQueueLockCondition<>(10);
+
         Runnable produceTask = new Runnable() {
             String produce = "item1";
             @Override
