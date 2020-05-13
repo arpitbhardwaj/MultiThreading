@@ -12,6 +12,16 @@ import java.util.concurrent.FutureTask;
  * For supporting this feature, the Callable interface is present in Java.
  */
 public class CallableFutureDemo {
+    private static class CallableTask implements Callable{
+
+        @Override
+        public Object call() throws Exception {
+            Random generator = new Random();
+            Integer randomInt = generator.nextInt(5);
+            Thread.sleep(randomInt *1000);
+            return randomInt;
+        }
+    }
     public static void main(String[] args) {
         FutureTask[] randomTask = new FutureTask[5];
         for (int i = 0; i < 5; i++) {
@@ -31,13 +41,4 @@ public class CallableFutureDemo {
     }
 }
 
-class CallableTask implements Callable{
 
-    @Override
-    public Object call() throws Exception {
-        Random generator = new Random();
-        Integer randomInt = generator.nextInt(5);
-        Thread.sleep(randomInt *1000);
-        return randomInt;
-    }
-}

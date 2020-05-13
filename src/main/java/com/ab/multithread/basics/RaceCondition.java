@@ -1,7 +1,5 @@
 package com.ab.multithread.basics;
 
-import com.ab.multithread.model.LongWrapper;
-
 /**
  * @author Arpit Bhardwaj
  *
@@ -14,6 +12,24 @@ import com.ab.multithread.model.LongWrapper;
  */
 
 public class RaceCondition {
+
+    private static class LongWrapper {
+        private long l;
+        private Object key = new Object();
+        public LongWrapper(long l) {
+            this.l = l;
+        }
+
+        public long getL() {
+            return l;
+        }
+
+        public void incrementL() {
+            synchronized (key){
+                l = l + 1 ;
+            }
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
         LongWrapper longWrapper = new LongWrapper(0L);
