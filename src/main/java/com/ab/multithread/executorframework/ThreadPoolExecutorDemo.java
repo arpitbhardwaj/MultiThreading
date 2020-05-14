@@ -13,10 +13,16 @@ import java.util.concurrent.ThreadPoolExecutor;
  * The java.util.concurrent.ThreadPoolExecutor is an implementation of the java.util.concurrent.ExecutorService interface.
  *
  * Executors is a utility class for factoru and utility methods for ExecutorService similar to Arrays and Collections
+ *
+ * If no custom thread factory instance is passed Java creates the threads with its internal thread factory.
  */
 public class ThreadPoolExecutorDemo {
     public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        //ExecutorService executorService = Executors.newFixedThreadPool(3);
+        ExecutorService executorService = Executors.newFixedThreadPool(3,new CustomThreadFactory("CustomPool"));
+        //ExecutorService executorService = Executors.newCachedThreadPool();
+        //ExecutorService executorService = Executors.newSingleThreadExecutor();
+
         //ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
         //Executor executor = Executors.newFixedThreadPool(5);
 

@@ -14,10 +14,10 @@ public class Task implements Runnable{
     @Override
     public void run() {
         String threadName = Thread.currentThread().getName();
-        System.out.println("Starting thread : " + threadName);
+        System.out.println("Starting Task : " + threadName);
         System.out.println("Processing Command : " + command);
         processCommand();
-        System.out.println("Ending Thread : " + threadName);
+        System.out.println("Ending Task : " + threadName);
     }
 
     private void processCommand() {

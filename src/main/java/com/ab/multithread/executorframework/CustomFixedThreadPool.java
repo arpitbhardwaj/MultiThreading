@@ -8,8 +8,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * @author Arpit Bhardwaj
  *
+ * Fixed thread pool is initialized with user supplied number of threads (nThreads).
+ * At any point in time, this thread pool contains nThreads no of threads.
+ * It internally manages a LinkedBlockingQueue to queue up additional influx of tasks when all threads in the pool are busy and new tasks can not be processed immediately.
+ *
  */
-public class CustomThreadPoolExecutor {
+public class CustomFixedThreadPool {
 
     private final int poolSize;
     private final CustomPoolWorkerThread[] workerThreads;
@@ -35,7 +39,7 @@ public class CustomThreadPoolExecutor {
         }
     }
 
-    public CustomThreadPoolExecutor(int poolSize) {
+    public CustomFixedThreadPool(int poolSize) {
         this.poolSize = poolSize;
         this.workerThreads = new CustomPoolWorkerThread[poolSize];
 
@@ -61,7 +65,7 @@ public class CustomThreadPoolExecutor {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        CustomThreadPoolExecutor customThreadPool = new CustomThreadPoolExecutor(5);
+        CustomFixedThreadPool customThreadPool = new CustomFixedThreadPool(5);
         for (int i = 0; i < 10; i++) {
             customThreadPool.execute(new Task(""+i));
         }
