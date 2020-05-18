@@ -1,4 +1,4 @@
-package com.ab.multithread.model;
+package com.ab.multithread.visibility;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,11 +16,28 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * The atomicity guarantees that the new value is calculated based on up-to-date information;
  * if the value had been updated by another thread in the meantime, the write would fail.
+ *
+ * CAS is implemented using compareAndSet function
+ * compareAndSet method atomically checks if the current value equals the expected value.
+ * If yes, the method updates the value to the new value and return true.
+ * If not, the method leaves the current value unchanged and returns false.
  */
 public class ThreadSafeCounter {
     private AtomicInteger count = new AtomicInteger(0);
 
-    public int getCount(){
-        return count.incrementAndGet();
+    public  void increment() {
+        count.incrementAndGet();
+        //internal implementation of incrementAndGet
+        /*int current = count.get();
+        int newValue = current + 1;
+        while( ! count.compareAndSet( current , newValue ) ) {
+            current = count.get();
+            newValue = current + 1;
+        }*/
+    }
+
+    //
+    public int getCount() {
+        return count.get();
     }
 }

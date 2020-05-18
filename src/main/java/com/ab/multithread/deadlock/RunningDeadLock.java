@@ -1,4 +1,6 @@
-package com.ab.multithread.basics;
+package com.ab.multithread.deadlock;
+
+import java.util.concurrent.TimeUnit;
 
 public class RunningDeadLock {
 
@@ -30,6 +32,10 @@ public class RunningDeadLock {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        //scheduler thread to detect deadlock
+        DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockConsoleHandler(), 5, TimeUnit.SECONDS);
+        deadlockDetector.start();
+
         DeadLock deadLock = new DeadLock();
 
         Runnable r1 = () -> deadLock.a();
