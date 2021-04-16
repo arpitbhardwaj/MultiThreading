@@ -14,12 +14,15 @@ public class InterruptStop {
                 while (!Thread.interrupted()){
                     System.out.println("Running Thread...");
                 }
+
                 System.out.println("Stopping Thread...");
             }
         });
 
         t.start();
-        Thread.sleep(5);
+        Thread.sleep(1);
         t.interrupt();
+        Thread.sleep(1);
+        System.out.println(t.isInterrupted());
     }
 }

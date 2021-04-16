@@ -14,8 +14,7 @@ public class ExceptionHandler {
         Thread.UncaughtExceptionHandler exceptionHandler = new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread t, Throwable e) {
-                System.out.println("Exception occurred in thread : "
-                + t.getName() + " Exception : " + e);
+                System.out.println(t.getName() + " Exception : " + e);
             }
         };
 
@@ -33,9 +32,9 @@ public class ExceptionHandler {
             }
         }, "Thread 1");
         //set exception handler only for Thread 1
-        t1.setUncaughtExceptionHandler(exceptionHandler);
+        //t1.setUncaughtExceptionHandler(exceptionHandler);
         //set the default exception handler for the entire
-        //Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
+        Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
         t1.start();
         try {
             Thread.sleep(4000);
@@ -43,6 +42,5 @@ public class ExceptionHandler {
             e.printStackTrace();
         }
         throw new RuntimeException();
-        //System.out.println("In Main");
     }
 }
