@@ -4,6 +4,9 @@ import java.util.concurrent.*;
 
 /**
  * @author Arpit Bhardwaj
+ *
+ * RunnableFuture is an interface which extends Runnable and Future interfaces (An interface can extend multiple interface)
+ * FutureTask implements RunnableFuture
  */
 public class Differences {
 
@@ -35,7 +38,7 @@ public class Differences {
             }
         };
 
-        FutureTask<String> futureTask = new FutureTask<>(new Callable<String>() {
+        FutureTask<String> futureCallableTask = new FutureTask<>(new Callable<String>() {
             @Override
             public String call() throws Exception {
                 System.out.println("Inside Future Callable call method");
@@ -48,11 +51,13 @@ public class Differences {
             }
         });
 
+        //below submit method is from ExecutorService interface which accepts runnable and returns future
         Future runnableSubmit = executorService.submit(runnableTask);
+        //below submit method is from ExecutorService interface which accepts callable and returns future
         Future<String> callableSubmit = executorService.submit(callableTask);
         //When you submit a FutureTask to a ExecutorService it is treated as a Runnable
         //so Future you get from the submit method would have the value null as the Runnable instances don't return any result.
-        Future futureSubmit = executorService.submit(futureTask);
+        Future futureSubmit = executorService.submit(futureCallableTask);
 
         while (!runnableSubmit.isDone()){
             System.out.println("Runnable Task is not completed yet...");

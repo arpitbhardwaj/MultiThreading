@@ -26,6 +26,7 @@ public class ThreadPoolExecutorDemo {
         //ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
         //Executor executor = Executors.newFixedThreadPool(5);
 
+        //execute method is from Executor interface which accepts runnable but return void
         for (int i = 0; i < 10; i++) {
             executorService.execute(new Task(""+i));
         }
