@@ -10,6 +10,11 @@ package com.ab.multithread.visibility;
  *
  * NutShell: It is used to inform the compiler that multiple threads will access a particular statement.
  * It prevents the compiler from doing any reordering or any optimization (caching the vaiable in thread stack frame).
+ *
+ * IF you are using synchonized keyword then volatile is not required
+ * as synchronised already has a memory barrier inserted after it,
+ * so all Threads will see the update that the current thread performs,
+ * taking into account that the other threads will synchronise on the same lock
  */
 public class VolatileDemo {
 }

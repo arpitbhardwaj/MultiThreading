@@ -2,6 +2,12 @@ package com.ab.multithread.deadlock;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Arpit Bhardwaj
+ *
+ * Deadlock is a situation when two threads are waiting for each other and the waiting is never ends.
+ * Here both threads cant completes their tasks.
+ */
 public class RunningDeadLock {
 
     private static class DeadLock {

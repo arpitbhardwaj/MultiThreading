@@ -21,12 +21,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  * compareAndSet method atomically checks if the current value equals the expected value.
  * If yes, the method updates the value to the new value and return true.
  * If not, the method leaves the current value unchanged and returns false.
+ *
+ * If you are using synchonized the atomic is not needed.
+ * You cannot rely only on atomic.So with Atomic synchonized is also needed
  */
 public class ThreadSafeCounter {
     private AtomicInteger count = new AtomicInteger(0);
 
     public  void increment() {
         count.incrementAndGet();
+
+        //count.getAndIncrement();//this method is same as the above one
+
         //internal implementation of incrementAndGet
         /*int current = count.get();
         int newValue = current + 1;
