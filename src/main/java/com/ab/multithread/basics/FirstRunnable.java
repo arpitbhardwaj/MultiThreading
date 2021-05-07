@@ -1,6 +1,6 @@
 package com.ab.multithread.basics;
 
-import com.sun.org.apache.xpath.internal.operations.Mult;
+//import com.sun.org.apache.xpath.internal.operations.Mult;
 
 /**
  * @author Arpit Bhardwaj
